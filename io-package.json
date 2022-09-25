@@ -1,78 +1,102 @@
 {
-	"common": {
-		"name": "opnsense",
-		"version": "0.0.1",
-		"news": {
-			"0.0.1": {
-				"en": "initial test alpha version",
-				"de": "Erstveröffentlichung Alpha Status"
-			}
-		},
-		"title": "OPNsense",
-		"titleLang": {
-			"en": "OPNsense",
-			"de": "OPNsense"
-		},
-		"desc": {
-			"en": "OPNsense",
-			"de": "Erklärung zur OPNsense"
-		},
-		"authors": [
-			"Seqway <zeckel@gmx.de>",
-			"gemuesepudding <volker@richert.nrw>"
-		],
-		"keywords": [
-			"opnsense",
-			"firewall"
-		],
-		"license": "MIT",
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"icon": "opnsense.jpg",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/Seqway/ioBroker.opnsense/dev/admin/opnsense.jpg",
-		"readme": "https://github.com/Seqway/ioBroker.opnsense/blob/main/README.md",
-		"loglevel": "info",
-		"mode": "daemon",
-		"type": "infrastructure",
-		"compact": true,
-		"connectionType": "local",
-		"dataSource": "poll",
-		"materialize": true,
-		"dependencies": [
-			{
-				"js-controller": ">=3.0.0"
-			}
-		]
-	},
-	"native": {
+    "common": {
+        "name": "opnsense",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial test alpha version",
+                "de": "Erstveröffentlichung Alpha Status",
+                "ru": "начальная тестовая альфа-версия",
+                "pt": "versão alfa de teste inicial",
+                "nl": "initiële test alfaversie",
+                "fr": "test initial version alpha",
+                "it": "versione alfa di prova iniziale",
+                "es": "versión alfa de prueba inicial",
+                "pl": "wstępna wersja testowa alfa",
+                "zh-cn": "初始测试 alpha 版本"
+            }
+        },
+        "title": "OPNsense",
+        "titleLang": {
+            "en": "OPNsense",
+            "de": "OPNsense",
+            "ru": "OPNsense",
+            "pt": "OPNsense",
+            "nl": "OPNsense",
+            "fr": "OPNsense",
+            "it": "OPNsense",
+            "es": "OPNsense",
+            "pl": "OPNsense",
+            "zh-cn": "OPNsense"
+        },
+        "desc": {
+            "en": "OPNsense",
+            "de": "Erklärung zur OPNsense",
+            "ru": "OPNsense",
+            "pt": "OPNsense",
+            "nl": "OPNsense",
+            "fr": "OPNsense",
+            "it": "OPNsense",
+            "es": "OPNsense",
+            "pl": "OPNsense",
+            "zh-cn": "OPNsense"
+        },
+        "authors": [
+            "Seqway <zeckel@gmx.de>",
+            "gemuesepudding <volker@richert.nrw>"
+        ],
+        "keywords": [
+            "opnsense",
+            "firewall"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "opnsense.jpg",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/Seqway/ioBroker.opnsense/dev/admin/opnsense.jpg",
+        "readme": "https://github.com/Seqway/ioBroker.opnsense/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "infrastructure",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=3.0.0"
+            }
+        ]
+    },
+    "native": {
         "OPNsenseServerIp": "",
         "ApiKey": "Installer",
         "ApiSecret": "",
         "pollcycle": ""
-	},
-	"objects": [],
-	"instanceObjects": [
-		{
-			"_id": "info",
-			"type": "channel",
-			"common": {
-				"name": "Information"
-			},
-			"native": {}
-		},
-		{
-			"_id": "info.connection",
-			"type": "state",
-			"common": {
-				"role": "indicator.connected",
-				"name": "Device or service connected",
-				"type": "boolean",
-				"read": true,
-				"write": false,
-				"def": false
-			},
-			"native": {}
-		}
-	]
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
 }
