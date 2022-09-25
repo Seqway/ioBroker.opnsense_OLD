@@ -1,106 +1,115 @@
 {
-	"common": {
-		"name": "opnsense",
-		"version": "0.0.1",
-		"news": {
-			"0.0.1": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "Начальная версия",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"zh-cn": "首次出版"
-			}
-		},
-		"title": "OPNSense",
-		"titleLang": {
-			"en": "OPNSense",
-			"de": "OPNSense",
-			"ru": "OPNSense",
-			"pt": "OPNSense",
-			"nl": "OPNSense",
-			"fr": "OPNSense",
-			"it": "OPNSense",
-			"es": "OPNSentido",
-			"pl": "OPNSense",
-			"zh-cn": "OPNSense"
-		},
-		"desc": {
-			"en": "Integrate your OPNSense",
-			"de": "Integrieren Sie Ihr OPNSense",
-			"ru": "Интегрируйте свой OPNSense",
-			"pt": "Integre seu OPNSense",
-			"nl": "Integreer uw OPNSense",
-			"fr": "Intégrez votre OPNSense",
-			"it": "Integra il tuo OPNSense",
-			"es": "Integre su OPNSense",
-			"pl": "Zintegruj swój OPNSense",
-			"zh-cn": "集成您的 OPNSense"
-		},
-		"authors": [
-			"Seqway <zeckel@gmx.de>"
-		],
-		"keywords": [
-			"OPNSense",
-			"iot"
-		],
-		"license": "MIT",
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"icon": "opnsense.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/Seqway/ioBroker.opnsense/main/admin/opnsense.png",
-		"readme": "https://github.com/Seqway/ioBroker.opnsense/blob/main/README.md",
-		"loglevel": "info",
-		"mode": "daemon",
-		"type": "infrastructure",
-		"compact": true,
-		"connectionType": "local",
-		"dataSource": "poll",
-		"adminUI": {
-			"config": "json"
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=3.3.22"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=5.1.13"
-			}
-		]
-	},
-	"native": {
-		"option1": true,
-		"option2": "42"
-	},
-	"objects": [],
-	"instanceObjects": [
-		{
-			"_id": "info",
-			"type": "channel",
-			"common": {
-				"name": "Information"
-			},
-			"native": {}
-		},
-		{
-			"_id": "info.connection",
-			"type": "state",
-			"common": {
-				"role": "indicator.connected",
-				"name": "Device or service connected",
-				"type": "boolean",
-				"read": true,
-				"write": false,
-				"def": false
-			},
-			"native": {}
-		}
-	]
+    "common": {
+        "name": "opnsense",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial test alpha version",
+                "de": "Erstveröffentlichung Alpha Status",
+                "ru": "начальная тестовая альфа-версия",
+                "pt": "versão alfa de teste inicial",
+                "nl": "initiële test alfaversie",
+                "fr": "test initial version alpha",
+                "it": "versione alfa di prova iniziale",
+                "es": "versión alfa de prueba inicial",
+                "pl": "wstępna wersja testowa alfa",
+                "zh-cn": "初始测试 alpha 版本"
+            }
+        },
+        "title": "OPNsense",
+        "titleLang": {
+            "en": "OPNsense",
+            "de": "OPNsense",
+            "ru": "OPNsense",
+            "pt": "OPNsense",
+            "nl": "OPNsense",
+            "fr": "OPNsense",
+            "it": "OPNsense",
+            "es": "OPNsense",
+            "pl": "OPNsense",
+            "zh-cn": "OPNsense"
+        },
+        "desc": {
+            "en": "OPNsense",
+            "de": "Erklärung zur OPNsense",
+            "ru": "OPNsense",
+            "pt": "OPNsense",
+            "nl": "OPNsense",
+            "fr": "OPNsense",
+            "it": "OPNsense",
+            "es": "OPNsense",
+            "pl": "OPNsense",
+            "zh-cn": "OPNsense"
+        },
+        "authors": [
+            "Seqway <zeckel@gmx.de>",
+            "gemuesepudding <volker@richert.nrw>"
+        ],
+        "keywords": [
+            "opnsense",
+            "firewall"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "opnsense.jpg",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/Seqway/ioBroker.opnsense/dev/admin/opnsense.jpg",
+        "readme": "https://github.com/Seqway/ioBroker.opnsense/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "infrastructure",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=4.0.0"
+            }
+        ]  ,
+        "globalDependencies": [
+                {
+                    "admin": ">=5.3.2"
+                }
+        ]
+    },
+    "native": {
+        "OPNsenseServerIp": "",
+        "apikey": "Installer",
+        "apisecret": "",
+        "pollcycle": ""
+    },
+    "encryptedNative": [
+        "apikey",
+        "apisecret"
+      ],
+      "protectedNative": [
+        "apikey",
+        "apisecret"
+      ],
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
 }

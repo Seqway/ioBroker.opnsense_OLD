@@ -1,5 +1,10 @@
 {
-	"opnsense adapter settings": "Paramètres d'adaptateur pour opnsense",
-	"option1": "Option 1",
-	"option2": "Option 2"
+    "opnsense adapter settings": "Paramètres d'adaptateur pour opnsense",
+    "option1": "Option 1",
+    "option2": "Option 2",
+    "IP adress of your OPNSense server": "Adresse IP de votre serveur OPNSense",
+    "OPNSense ServerIP": "IP du serveur OPNSense",
+    "APIkey": "Clé API",
+    "APIsecret": "API secret",
+    "Options": "Choix"
 }

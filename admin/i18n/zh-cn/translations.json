@@ -1,5 +1,10 @@
 {
-	"opnsense adapter settings": "opnsense的适配器设置",
-	"option1": "选项1",
-	"option2": "选项2"
+    "opnsense adapter settings": "opnsense的适配器设置",
+    "option1": "选项1",
+    "option2": "选项2",
+    "IP adress of your OPNSense server": "您的 OPNSense 服务器的 IP 地址",
+    "OPNSense ServerIP": "OPNSense 服务器IP",
+    "APIkey": "APIkey",
+    "APIsecret": "APIsecret",
+    "Options": "选项"
 }

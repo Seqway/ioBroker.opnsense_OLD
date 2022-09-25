@@ -7,7 +7,7 @@
 ![Current version in stable repository](https://iobroker.live/badges/opnsense-stable.svg)
 [![Dependency Status](https://img.shields.io/david/Seqway/iobroker.opnsense.svg)](https://david-dm.org/Seqway/iobroker.opnsense)
 
-[![NPM](https://nodei.co/npm/iobroker.opnsense.png?downloads=true)](https://nodei.co/npm/iobroker.opnsense/)
+[![NPM](https://nodei.co/npm/iobroker.opnsense.jpg?downloads=true)](https://nodei.co/npm/iobroker.opnsense/)
 
 **Tests:** ![Test and Release](https://github.com/Seqway/ioBroker.opnsense/workflows/Test%20and%20Release/badge.svg)
 

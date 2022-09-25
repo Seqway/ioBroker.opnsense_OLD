@@ -1,5 +1,10 @@
 {
-	"opnsense adapter settings": "Настройки адаптера для opnsense",
-	"option1": "Опция 1",
-	"option2": "вариант 2"
+    "opnsense adapter settings": "Настройки адаптера для opnsense",
+    "option1": "Опция 1",
+    "option2": "вариант 2",
+    "IP adress of your OPNSense server": "IP-адрес вашего сервера OPNSense",
+    "OPNSense ServerIP": "IP-адрес сервера OPNSense",
+    "APIkey": "APIключ",
+    "APIsecret": "APIsecret",
+    "Options": "Опции"
 }
