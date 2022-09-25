@@ -11,9 +11,9 @@
 
 **Tests:** ![Test and Release](https://github.com/Seqway/ioBroker.opnsense/workflows/Test%20and%20Release/badge.svg)
 
-## opnsense adapter for ioBroker
+## OPNSense adapter for ioBroker
 
-Describe your project here
+Integration of your OPNSense server into iobroker
 ## How-To
 
 Please provide your feedback here
@@ -46,7 +46,7 @@ When the adapter crashes or an other Code error happens, this error message that
 ## License
 MIT License
 
-Copyright (c) 2020 Seqway <dirkscheck@gmx.de>
+Copyright (c) 2022 Seqway <dirkscheck@gmx.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
