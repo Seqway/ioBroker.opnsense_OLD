@@ -6,39 +6,30 @@
             "type": "panel",
             "label": "Options",
             "items": {
-                "serverIp": {
+                "OPNSense_ServerIp": {
                     "type": "text",
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
-                    "label": "Server",
-                    "help": "IP or hostname of your Gira X1 or HomeServer"
+                    "label": "OPNSense ServerIP",
+                    "help": "IP adress of your OPNSense server"
                 },
-                "serverPort": {
-                    "type": "number",
-                    "min": 1,
-                    "max": 65535,
-                    "sm": 12,
-                    "md": 6,
-                    "lg": 6,
-                    "label": "Port"
-                },
-                "userName": {
+                "apikey": {
                     "newLine": true,
-                    "type": "text",
+                    "type": "password",
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
-                    "label": "Username"
+                    "label": "APIkey"
                 },
-                "userPassword": {
+                "apisecret": {
                     "type": "password",
                     "repeat": false,
                     "visible": false,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
-                    "label": "Password"
+                    "label": "APIsecret"
                 }
             }
         }

@@ -30,7 +30,7 @@
 		"main": "main.js",
 		"icon": "opnsense.jpg",
 		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/Seqway/ioBroker.opnsense/dev/admin/opnsense.png",
+		"extIcon": "https://raw.githubusercontent.com/Seqway/ioBroker.opnsense/dev/admin/opnsense.jpg",
 		"readme": "https://github.com/Seqway/ioBroker.opnsense/blob/main/README.md",
 		"loglevel": "info",
 		"mode": "daemon",
