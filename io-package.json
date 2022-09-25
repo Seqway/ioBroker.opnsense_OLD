@@ -46,9 +46,10 @@
 		]
 	},
 	"native": {
-		"option1": true,
-		"option2": "",
-		"pollcycle": ""
+        "OPNsenseServerIp": "",
+        "ApiKey": "Installer",
+        "ApiSecret": "",
+        "pollcycle": ""
 	},
 	"objects": [],
 	"instanceObjects": [
