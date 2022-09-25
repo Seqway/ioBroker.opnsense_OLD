@@ -1,16 +1,38 @@
 {
-	"i18n": true,
-	"type": "panel",
-	"items": {
-		"option1": {
-			"type": "checkbox",
-			"label": "option1",
-			"newLine": true
-		},
-		"option2": {
-			"type": "text",
-			"label": "option2",
-			"newLine": true
-		}
-	}
+    "i18n": true,
+    "type": "tabs",
+    "items": {
+        "_options": {
+            "type": "panel",
+            "label": "Options",
+            "items": {
+                "OPNsenseServerIp": {
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "OPNsenseServerIp",
+                    "help": "IP address of your OPNSense server"
+                },
+                },
+                "ApiKey": {
+                    "newLine": true,
+                    "type": "password",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "ApiKey"
+                },
+                "ApiSecret": {
+                    "type": "password",
+                    "repeat": false,
+                    "visible": false,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "ApiSecret"
+                }
+            }
+        }
+    }
 }
