@@ -104,43 +104,47 @@ class Opnsense extends utils.Adapter {
             });
         });
 
-        const client = new OPNSenseClient(this.config.apikey, this.config.apisecret, this.config.OPNsenseServerIp);
+        if (this.config.apikey && this.config.apisecret && this.config.OPNsenseServerIp) {
+            const client = new OPNSenseClient(this.config.apikey, this.config.apisecret, this.config.OPNsenseServerIp);
 
-        config.modules && config.modules.forEach((module: OPNSenseModuleConfig) => {
-            module && module.controllers.forEach((controller: OPNSenseControllerConfig) => {
-                controller && controller.commands.forEach(command => {
-                    this.log.info('call ' + command.name);
-                    let url = command.url;
-                    if (isEmpty(url)) {
-                        url = `${module.name}/${controller.name}/${command.name}`.toLowerCase();
-                    }
-                    const method = command.method.toLowerCase() || 'get';
+            config.modules && config.modules.forEach((module: OPNSenseModuleConfig) => {
+                module && module.controllers.forEach((controller: OPNSenseControllerConfig) => {
+                    controller && controller.commands.forEach(command => {
+                        this.log.info('call ' + command.name);
+                        let url = command.url;
+                        if (isEmpty(url)) {
+                            url = `${module.name}/${controller.name}/${command.name}`.toLowerCase();
+                        }
+                        const method = command.method.toLowerCase() || 'get';
 
-                    switch (method) {
-                        case 'get':
-                            client.get(url)
-                                .then(async (result: object) => {
-                                    //this.log.debug(JSON.stringify(result))
-                                    let transformed = result;
-                                    if (typeof command.transform === 'function') {
-                                        transformed = command.transform(transformed);
-                                    }
+                        switch (method) {
+                            case 'get':
+                                client.get(url)
+                                    .then(async (result: object) => {
+                                        //this.log.debug(JSON.stringify(result))
+                                        let transformed = result;
+                                        if (typeof command.transform === 'function') {
+                                            transformed = command.transform(transformed);
+                                        }
 
-                                    transformed = this.removeIgnored(command.ignore, transformed);
-                                    this.setStates([module.name, controller.name, command.name].join('.'), transformed);
-                                })
-                                .catch((reason: any) => {
-                                    this.log.error(reason);
-                                });
+                                        transformed = this.removeIgnored(command.ignore, transformed);
+                                        this.setStates([module.name, controller.name, command.name].join('.'), transformed);
+                                    })
+                                    .catch((reason: any) => {
+                                        this.log.error(reason);
+                                    });
 
-                            break;
-                    }
+                                break;
+                        }
+                    });
                 });
             });
-        });
 
-        // Reset the connection indicator during startup
-        this.setState('info.connection', false, true);
+            // Reset the connection indicator during startup
+            this.setState('info.connection', true, true);
+        } else {
+            this.setState('info.connection', false, true);
+        }
     }
 
     private setStates(parentName: string, transformed: object) {
