@@ -51,7 +51,7 @@
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
-        "main": "build/main.js",
+        "main": "main.js",
         "icon": "opnsense.jpg",
         "enabled": true,
         "extIcon": "https://raw.githubusercontent.com/Seqway/ioBroker.opnsense/dev/admin/opnsense.jpg",
