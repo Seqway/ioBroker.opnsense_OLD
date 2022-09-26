@@ -1,4 +1,30 @@
-const config = {
+import {AxiosResponseTransformer} from "axios";
+
+interface OPNSenseCommandConfig {
+	name: string,
+	desc?: string | null,
+	url: string,
+	method: 'GET' | 'POST',
+	refresh?: number,
+	ignore?: string[],
+	transform?: AxiosResponseTransformer
+}
+
+export interface OPNSenseControllerConfig {
+	name: string,
+	commands: OPNSenseCommandConfig[]
+}
+export interface OPNSenseModuleConfig {
+	name: string,
+	desc: string,
+	controllers: OPNSenseControllerConfig[]
+}
+
+export interface OPNSenseConfig  {
+	modules: OPNSenseModuleConfig[]
+}
+
+export const config: OPNSenseConfig = {
 	modules: [
 		{
 			name: 'core',
@@ -20,7 +46,7 @@ const config = {
 					}
 				}, {
 					name: 'status',
-					url: null,
+					url: '',
 					method: 'GET',
 					refresh: 3600,
 					ignore: [ 'all_packages', 'all_sets', 'upgrade_sets' ],
@@ -38,4 +64,4 @@ const config = {
 	]
 };
 
-module.exports = config;
+export default config;
