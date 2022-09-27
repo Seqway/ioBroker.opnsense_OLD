@@ -8,7 +8,7 @@ declare global {
 
 	namespace ioBroker {
 		interface AdapterConfig {
-			OPNsenseServerIp: string,
+			OPNSense_ServerIp: string,
 			apikey: string,
 			apisecret: string,
 		}

@@ -91,7 +91,6 @@ class Opnsense extends utils.Adapter {
                         }, native: {}
                     }).then(controllerChannel => {
                         controller && controller.commands.forEach((command: OPNSenseCommandConfig) => {
-                            this.log.info('call ' + command.name);
                             this.setObjectNotExistsAsync(module.name + '.' + controller.name + '.' + command.name, {
                                 type: 'channel',
                                 common: {
@@ -107,8 +106,9 @@ class Opnsense extends utils.Adapter {
             });
         });
 
-        if (this.config.apikey && this.config.apisecret && this.config.OPNsenseServerIp) {
-            const client = new OPNSenseClient(this.config.apikey, this.config.apisecret, this.config.OPNsenseServerIp)
+        if (this.config.apikey && this.config.apisecret && this.config.OPNSense_ServerIp) {
+            this.log.debug("connect to " + this.config.OPNSense_ServerIp)
+            const client = new OPNSenseClient(this.config.apikey, this.config.apisecret, "https://" + this.config.OPNSense_ServerIp + "/api")
 
             config.modules && config.modules.forEach((module: OPNSenseModuleConfig) => {
                 module && module.controllers.forEach((controller: OPNSenseControllerConfig) => {
@@ -122,10 +122,10 @@ class Opnsense extends utils.Adapter {
 
                         switch (method) {
                             case 'get':
-                                this.log.debug("get `$url`")
+                                this.log.debug(`GET ${url}`)
                                 client.get(url)
                                     .then(async (result: object) => {
-                                        this.log.debug(JSON.stringify(result))
+                                        //this.log.silly(JSON.stringify(result))
                                         let transformed = result;
                                         if (typeof command.transform === 'function') {
                                             transformed = command.transform(transformed);
@@ -153,7 +153,6 @@ class Opnsense extends utils.Adapter {
 
     private setStates(parentName: string, transformed: object) {
         for (const [key, value] of Object.entries(transformed)) {
-            console.log(`${key}(${key.toCamelCase()}): ${value}`);
             const stateName = [parentName, key.toCamelCase()].join('.');
             if (isObject(value)) {
                 this.setObjectNotExistsAsync(stateName, {

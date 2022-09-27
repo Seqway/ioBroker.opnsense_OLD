@@ -60,6 +60,10 @@
         "mode": "daemon",
         "type": "infrastructure",
         "compact": true,
+        "adminUI": {
+            "config": "json",
+            "tab": "materialize"
+        },
         "connectionType": "local",
         "dataSource": "poll",
         "materialize": true,
