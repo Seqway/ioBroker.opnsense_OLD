@@ -69,7 +69,7 @@
   "scripts": {
     "prebuild": "rimraf build",
     "build": "build-adapter ts",
-    "watch": "build-adapter ts --watch",
+    "watch": "dev-server watch",
     "prebuild:ts": "rimraf build",
     "build:ts": "build-adapter ts",
     "watch:ts": "build-adapter ts --watch",

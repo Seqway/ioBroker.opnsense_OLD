@@ -43,12 +43,10 @@ class OPNSenseClient {
             axiosInstance.get(url, options)
                 .then((response) => {
                     // handle success
-                    console.info(response);
                     resolve(response.data || {});
                 })
                 .catch((error) => {
                     // handle error
-                    console.error(error);
                     reject(error);
                 })
                 .finally(() => {
@@ -64,12 +62,10 @@ class OPNSenseClient {
             axiosInstance.post(url, options)
                 .then((response) => {
                     // handle success
-                    console.info(response);
                     resolve(response.data || {});
                 })
                 .catch((error) => {
                     // handle error
-                    console.error(error);
                     reject(error);
                 })
                 .finally(() => {

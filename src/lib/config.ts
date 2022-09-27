@@ -1,6 +1,6 @@
 import {AxiosResponseTransformer} from "axios";
 
-interface OPNSenseCommandConfig {
+export interface OPNSenseCommandConfig {
 	name: string,
 	desc?: string | null,
 	url: string,
@@ -46,7 +46,7 @@ export const config: OPNSenseConfig = {
 					}
 				}, {
 					name: 'status',
-					url: '',
+					url: '/core/firmware/status',
 					method: 'GET',
 					refresh: 3600,
 					ignore: [ 'all_packages', 'all_sets', 'upgrade_sets' ],

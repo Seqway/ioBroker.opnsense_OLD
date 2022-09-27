@@ -8,17 +8,14 @@
 // you need to create an adapter
 
 import * as utils from "@iobroker/adapter-core";
-import {OPNSenseControllerConfig, OPNSenseModuleConfig} from "./lib/config";
-import OPNSenseClient from './lib/opensense'
+import {config, OPNSenseCommandConfig, OPNSenseControllerConfig, OPNSenseModuleConfig} from "./lib/config";
+import OPNSenseClient from "./lib/opensense";
 import {isArray, isEmpty, isObject} from './lib/tools';
 
-const config = require('./lib/config');
 const interval = '10';
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
-
-const defaults = {}
 
 class Opnsense extends utils.Adapter {
 
@@ -27,10 +24,10 @@ class Opnsense extends utils.Adapter {
      */
     constructor(options: Partial<utils.AdapterOptions> = {}) {
         super({
-            ...defaults,
             ...options,
             name: 'opnsense'
         });
+
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
         // this.on("objectChange", this.onObjectChange.bind(this));
@@ -43,6 +40,7 @@ class Opnsense extends utils.Adapter {
      * @param {() => void} callback
      */
     protected onUnload(callback: () => void) {
+        this.log.debug("OPNSense adapter unloading")
         try {
             // Here you must clear all timeouts or intervals that may still be active
             // clearTimeout(timeout1);
@@ -76,20 +74,23 @@ class Opnsense extends utils.Adapter {
      */
     protected async onReady(): Promise<void> {
         // Initialize folders
-
+        this.log.debug("OPNSense adapter creating states")
         config.modules && config.modules.forEach((module: OPNSenseModuleConfig) => {
+            this.log.debug("[OPNSense] creating module " + module.name)
             this.setObjectNotExistsAsync(module.name, {
                 type: 'folder', common: {
                     name: module.name, read: true, write: true
                 }, native: {}
             }).then(moduleChannel => {
+
                 module && module.controllers.forEach((controller: OPNSenseControllerConfig) => {
+                    this.log.debug("[OPNSense] creating controller " + controller.name)
                     this.setObjectNotExistsAsync(module.name + '.' + controller.name, {
                         type: 'folder', common: {
                             name: controller.name, read: true, write: true
                         }, native: {}
                     }).then(controllerChannel => {
-                        controller && controller.commands.forEach(command => {
+                        controller && controller.commands.forEach((command: OPNSenseCommandConfig) => {
                             this.log.info('call ' + command.name);
                             this.setObjectNotExistsAsync(module.name + '.' + controller.name + '.' + command.name, {
                                 type: 'channel',
@@ -101,11 +102,13 @@ class Opnsense extends utils.Adapter {
                         });
                     });
                 });
+            }).catch(e => {
+                this.log.error(e.message)
             });
         });
 
         if (this.config.apikey && this.config.apisecret && this.config.OPNsenseServerIp) {
-            const client = new OPNSenseClient(this.config.apikey, this.config.apisecret, this.config.OPNsenseServerIp);
+            const client = new OPNSenseClient(this.config.apikey, this.config.apisecret, this.config.OPNsenseServerIp)
 
             config.modules && config.modules.forEach((module: OPNSenseModuleConfig) => {
                 module && module.controllers.forEach((controller: OPNSenseControllerConfig) => {
@@ -119,9 +122,10 @@ class Opnsense extends utils.Adapter {
 
                         switch (method) {
                             case 'get':
+                                this.log.debug("get `$url`")
                                 client.get(url)
                                     .then(async (result: object) => {
-                                        //this.log.debug(JSON.stringify(result))
+                                        this.log.debug(JSON.stringify(result))
                                         let transformed = result;
                                         if (typeof command.transform === 'function') {
                                             transformed = command.transform(transformed);
