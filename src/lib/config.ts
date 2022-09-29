@@ -24,6 +24,25 @@ export interface OPNSenseConfig  {
 	modules: OPNSenseModuleConfig[]
 }
 
+const dummy = {
+	type: 'channel',
+	common: {
+		name: 'system'
+	},
+	children: [{
+		type: 'state',
+		common: {
+			// type: 'state'
+			// common: StateCommon;
+			name: 'version',
+			desc: 'version of OPNSense',
+			type: 'string'
+		},
+		endPoint: 'firmwareInfo',
+		dataPoint: 'product.productCheck.productVersion'
+	}]
+}
+
 export const config: OPNSenseConfig = {
 	modules: [
 		{

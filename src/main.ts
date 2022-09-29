@@ -107,7 +107,7 @@ class Opnsense extends utils.Adapter {
         });
 
         if (this.config.apikey && this.config.apisecret && this.config.OPNSense_ServerIp) {
-            this.log.debug("connect to " + this.config.OPNSense_ServerIp)
+            this.log.debug("using https://" + this.config.OPNSense_ServerIp)
             const client = new OPNSenseClient(this.config.apikey, this.config.apisecret, "https://" + this.config.OPNSense_ServerIp + "/api")
 
             config.modules && config.modules.forEach((module: OPNSenseModuleConfig) => {
